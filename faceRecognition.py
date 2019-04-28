@@ -29,6 +29,7 @@ knn.fit(dataset[:,:-1], dataset[:,-1])
 
 capture = cv2.VideoCapture(0)
 
+
 face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
 while True:
@@ -44,6 +45,7 @@ while True:
 
 		onlyFace = image[y:y+h,x:x+w]
 		onlyFace = cv2.resize(onlyFace,(100,100))
+		
 		# print(onlyFace.shape)
 		onlyFace = onlyFace.reshape((1,-1))
 		print("only face", onlyFace.shape)
@@ -57,7 +59,6 @@ while True:
 		cv2.putText(image,prediction[0],(x,y),cv2.FONT_ITALIC,1,(0,255,0),2)
 
 	cv2.imshow("Image Recognition",image)
-
 	key = cv2.waitKey(1)
 	if key & 0xFF == ord('q'):
 		break
